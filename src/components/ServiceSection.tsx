@@ -50,7 +50,7 @@ const services: Service[] = [
 
 const ServiceSection: React.FC = () => {
   return (
-    <section>
+    <section id="services">
       <div className="max-w-330 mx-auto p-20 space-y-17.5">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

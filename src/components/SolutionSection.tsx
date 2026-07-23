@@ -36,7 +36,7 @@ const cards: FeatureCard[] = [
 
 const SolutionSection: React.FC = () => {
   return (
-    <section className="bg-[url('/solar-panels.jpg')] bg-cover bg-center relative z-10 overflow-hidden">
+    <section id="about" className="bg-[url('/solar-panels.jpg')] bg-cover bg-center relative z-10 overflow-hidden">
       <img
         aria-hidden="true"
         className="absolute h-48 top-4 -right-8 object-contain -z-20"

@@ -36,7 +36,7 @@ const testimonials: Testimonial[] = [
 
 const TestimonialSection: React.FC = () => {
   return (
-    <section className="relative z-10">
+    <section id="testimonials" className="relative z-10">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 0.4, scale: 1 }}

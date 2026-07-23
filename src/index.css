@@ -24,9 +24,22 @@
   --font-sans: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: var(--font-sans);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #233F32;
+}
+::-webkit-scrollbar-thumb {
+  background: #BDF033;
 }
 
 .gradient-border {
