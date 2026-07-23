@@ -5,7 +5,7 @@ import { HoverScale } from "./animations/HoverScale";
 
 const HeroSection = () => {
   return (
-    <header className="bg-[url('/hero.jpg')] bg-cover bg-center relative z-10 overflow-hidden">
+    <header className="bg-[url('/hero.jpg')] bg-fixed bg-cover bg-center relative z-10 overflow-hidden">
       <div className="absolute top-0 left-0 -z-10 w-305 h-231.75 rounded-[463.5px] opacity-[0.56] bg-[hsla(196,100%,25%,1)] blur-[148.4px]"></div>
 
       <motion.nav
