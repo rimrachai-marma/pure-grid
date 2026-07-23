@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Heading from "./Heading";
 
 import SolarGridIcon from "./icons/SolarGridIcon";
@@ -45,24 +46,49 @@ const SolutionSection: React.FC = () => {
       <div className="-z-10 absolute top-0 left-0 w-full h-full bg-[linear-gradient(180deg,rgba(255,255,255,0.80)_41.85%,rgba(220,230,236,0.80)_100%)] bg-cover bg-center"></div>
 
       <div className="max-w-330 mx-auto px-20 py-15">
-        <div className="space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-4"
+        >
           <Heading>Our Solutions</Heading>
           <p className="mt-4 w-89.5 text-[hsla(0,0%,0%,1)] text-[34px] font-normal leading-[140%] tracking-[-0.5px]">
             Design Solutions for a Zero-Carbon World
           </p>
-        </div>
+        </motion.div>
 
-        <div className="py-8 grid grid-cols-3 gap-5">
+        <motion.div
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="py-8 grid grid-cols-3 gap-5"
+        >
           {cards.map(({ icon, title, description }) => (
-            <div
+            <motion.div
               key={title}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+              }}
+              whileHover={{ y: -8, boxShadow: "0 12px 24px 0 rgba(0,0,0,0.08)" }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col h-full bg-[hsla(153,100%,98%,0.79)] py-8 px-6 rounded-3xl border border-[#C1DBCF] shadow-[0_4px_4px_0_rgba(0,0,0,0.04)]"
             >
-              {icon}
+              <motion.div whileHover={{ rotate: -6, scale: 1.08 }} transition={{ type: "spring", stiffness: 300 }}>
+                {icon}
+              </motion.div>
               <h3 className="mt-27.5 text-[hsla(151,61%,11%,1)] text-[30px] leading-[120%] tracking-[-1px]">{title}</h3>
               <p className="mt-3.5 text-[hsl(0_0%_35%)] leading-[160%] tracking-[-0.5px]">{description}</p>
-              <a
+              <motion.a
                 href="#"
+                whileHover={{ x: 4 }}
+                transition={{ type: "spring", stiffness: 400, damping: 20 }}
                 className="self-start mt-7.5 flex items-center gap-2.5 py-2.75 px-3 rounded-[10px] border border-[#C8DFD4] bg-[hsla(0,0%,100%,1)] text-[hsla(151,61%,11%,1)]"
               >
                 <span>Learn More</span>
@@ -72,10 +98,10 @@ const SolutionSection: React.FC = () => {
                     fill="#0A2B1C"
                   />
                 </svg>
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

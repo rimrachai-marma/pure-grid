@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+
 import Heading from "./Heading";
 
 interface Testimonial {
@@ -35,11 +37,30 @@ const testimonials: Testimonial[] = [
 const TestimonialSection: React.FC = () => {
   return (
     <section className="relative z-10">
-      <div className="absolute top-0 left-0 -z-10 w-[367.501px] h-[692.18px] rotate-90 rounded-[692.18px] opacity-40 bg-[linear-gradient(90deg,#CBFE91_-9.5%,#D6F3F4_100%)] blur-[100px]"></div>
-      <div className="absolute bottom-0 right-0 -z-10 w-[589.381px] h-[367.501px] rounded-[589.381px] opacity-30 bg-[#DBE3AA] blur-[100px]"></div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 0.4, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute top-0 left-0 -z-10 w-[367.501px] h-[692.18px] rotate-90 rounded-[692.18px] bg-[linear-gradient(90deg,#CBFE91_-9.5%,#D6F3F4_100%)] blur-[100px]"
+      ></motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 0.3, scale: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute bottom-0 right-0 -z-10 w-[589.381px] h-[367.501px] rounded-[589.381px] bg-[#DBE3AA] blur-[100px]"
+      ></motion.div>
 
       <div className="max-w-330 mx-auto px-30 py-20 flex flex-col gap-15">
-        <div className="flex flex-col items-center gap-3 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center gap-3 text-center"
+        >
           <Heading>Testimonials</Heading>
           <div className="space-y-4 w-full max-w-134">
             <h3 className="text-[48px] font-medium leading-[110%] tracking-[-2.5px] text-[hsla(151,61%,11%,1)]">
@@ -49,10 +70,28 @@ const TestimonialSection: React.FC = () => {
               Master your energy ecosystem with smart technology and tailored performance analytics.
             </p>
           </div>
-        </div>
-        <div className="grid grid-cols-3 gap-6">
+        </motion.div>
+        <motion.div
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-3 gap-6"
+        >
           {testimonials.map((testimonial) => (
-            <div className="space-y-6 gradient-border px-6 py-8 rounded-4xl">
+            <motion.div
+              key={testimonial.name}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+              }}
+              whileHover={{ y: -6, boxShadow: "0 12px 24px 0 rgba(0,0,0,0.08)" }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-6 gradient-border px-6 py-8 rounded-4xl"
+            >
               <div className="flex gap-2 items-center">
                 <div className="size-15 overflow-hidden rounded-full">
                   <img
@@ -67,9 +106,9 @@ const TestimonialSection: React.FC = () => {
                 </div>
               </div>
               <p className="text-[20px] leading-[170%] text-[hsla(0,0%,6%,1)]">{testimonial.quote}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

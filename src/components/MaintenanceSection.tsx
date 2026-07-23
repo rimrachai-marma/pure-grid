@@ -1,14 +1,30 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 import Heading from "./Heading";
+
+const stagger: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+};
 
 const MaintenanceSection: React.FC = () => {
   return (
     <section className="bg-white">
       <div className="max-w-330 mx-auto px-20 py-15">
-        <div className="py-8 grid grid-cols-3 gap-11.5">
-          <div className="flex flex-col justify-between gap-8">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="py-8 grid grid-cols-3 gap-11.5"
+        >
+          <motion.div variants={fadeUp} className="flex flex-col justify-between gap-8">
             <div className="space-y-5">
               <Heading>Maintenance</Heading>
               <h2 className="font-medium text-[48px] leading-[130%] tracking-[-2px] text-[hsla(151,61%,11%,1)]">
@@ -19,9 +35,9 @@ const MaintenanceSection: React.FC = () => {
               At PureGrid, our engineering focus is on longevity. We combine premium materials with smart tech to ensure
               your energy infrastructure runs at peak performance for decades.
             </p>
-          </div>
-          <div className="flex flex-col gap-20">
-            <div className="space-y-3">
+          </motion.div>
+          <motion.div variants={stagger} className="flex flex-col gap-20">
+            <motion.div variants={fadeUp} className="space-y-3">
               <h3 className="text-[24px] font-medium leading-[140%] tracking-[-0.8px] text-[hsla(151,61%,11%,1)]">
                 Ruggedized Hardware
               </h3>
@@ -29,8 +45,8 @@ const MaintenanceSection: React.FC = () => {
                 Our panels are engineered to endure extreme environmental stress, significantly lowering the need for
                 hardware swaps.
               </p>
-            </div>
-            <div className="space-y-3">
+            </motion.div>
+            <motion.div variants={fadeUp} className="space-y-3">
               <h3 className="text-[24px] font-medium leading-[140%] tracking-[-0.8px] text-[hsla(151,61%,11%,1)]">
                 Proactive Health Checks
               </h3>
@@ -38,8 +54,8 @@ const MaintenanceSection: React.FC = () => {
                 We conduct systematic performance audits to keep your output at 100% and resolve minor issues before
                 they escalate.
               </p>
-            </div>
-            <div className="space-y-3">
+            </motion.div>
+            <motion.div variants={fadeUp} className="space-y-3">
               <h3 className="text-[24px] font-medium leading-[140%] tracking-[-0.8px] text-[hsla(151,61%,11%,1)]">
                 Rapid Response Team
               </h3>
@@ -47,9 +63,13 @@ const MaintenanceSection: React.FC = () => {
                 Should an interruption occur, our technical specialists provide immediate onsite support to restore your
                 power flow fast.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           <motion.div
+            variants={{
+              hidden: { opacity: 0, x: 24 },
+              visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+            }}
             whileHover={{ scale: 1.03 }}
             transition={{ duration: 0.4 }}
             className="w-full h-full overflow-hidden rounded-3xl"
@@ -60,7 +80,7 @@ const MaintenanceSection: React.FC = () => {
               alt="Solar maintenance"
             />
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

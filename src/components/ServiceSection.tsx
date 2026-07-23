@@ -1,11 +1,13 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+import Heading from "./Heading";
 import { TailoredEnergyPlansIcon } from "./icons/TailoredEnergyPlansIcon";
 import { AcceleratedDeploymentIcon } from "./icons/AcceleratedDeploymentIcon";
 import { IndustryLeadingExpertiseIcon } from "./icons/IndustryLeadingExpertiseIcon";
 import { PerformanceMonitoringIcon } from "./icons/PerformanceMonitoringIcon";
 import { ScalableArchitectureIcon } from "./icons/ScalableArchitectureIcon";
 import { FlexibleFinancingIcon } from "./icons/FlexibleFinancingIcon";
-import Heading from "./Heading";
 
 type Service = {
   icon: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -50,7 +52,13 @@ const ServiceSection: React.FC = () => {
   return (
     <section>
       <div className="max-w-330 mx-auto p-20 space-y-17.5">
-        <div className="space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-4"
+        >
           <Heading>Our Services</Heading>
           <div className="flex">
             <h2 className="flex: 1 0 0 font-medium text-[48px] leading-[130%] tracking-[-2px] text-[hsla(151,61%,11%,1)]">
@@ -61,19 +69,39 @@ const ServiceSection: React.FC = () => {
               total peace of mind.
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-3 gap-7.5">
+        <motion.div
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          className="grid grid-cols-3 gap-7.5"
+        >
           {services.map(({ icon: Icon, title, description }) => (
-            <div className="gradient-border rounded-[10px] shadow-[0_4px_4px_0_rgba(0,0,0,0.04)] p-7.5 flex flex-col gap-12.5">
-              <Icon />
+            <motion.div
+              key={title}
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+              }}
+              whileHover={{ y: -8, boxShadow: "0 12px 24px 0 rgba(0,0,0,0.08)" }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="gradient-border rounded-[10px] shadow-[0_4px_4px_0_rgba(0,0,0,0.04)] p-7.5 flex flex-col gap-12.5"
+            >
+              <motion.div whileHover={{ rotate: -8, scale: 1.1 }} transition={{ type: "spring", stiffness: 300 }}>
+                <Icon />
+              </motion.div>
               <div className="space-y-3">
                 <h3 className="text-[24px] leading-[130%] tracking-[-1px] text-[hsla(146,100%,1%,1)]">{title}</h3>
                 <p className="leading-[160%] tracking-[-0.5px] text-[hsla(0,0%,35%,1)]">{description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
