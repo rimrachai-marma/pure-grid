@@ -9,7 +9,7 @@ export default function EcosystemSection() {
             initial={{ opacity: 0, rotate: -20, scale: 0.9 }}
             whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             className="absolute -left-7 top-18.5"
             xmlns="http://www.w3.org/2000/svg"
             width="356"
