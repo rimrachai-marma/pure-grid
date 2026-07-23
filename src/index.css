@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/Satoshi-Variable.woff2') format('woff2'),
+       url('./assets/fonts/Satoshi-Variable.woff') format('woff'),
+       url('./assets/fonts/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/Satoshi-VariableItalic.woff2') format('woff2'),
+       url('./assets/fonts/Satoshi-VariableItalic.woff') format('woff'),
+       url('./assets/fonts/Satoshi-VariableItalic.ttf') format('truetype');
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+}
+
+
+body {
+  font-family: var(--font-sans);
+}
+
+.gradient-border {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(
+      to bottom right,
+      hsla(0, 0%, 87%, 1) 0%,
+      hsla(0, 0%, 100%, 1) 33%,
+      hsla(0, 0%, 100%, 1) 66%,
+      hsla(0, 0%, 87%, 1) 100%
+    ) border-box;
+}
+

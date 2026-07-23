@@ -1,0 +1,30 @@
+export const AcceleratedDeploymentIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" {...props}>
+    <path
+      opacity={0.4}
+      d="M4.24609 26.6667V13.1236C4.24609 12.0657 5.41908 11.4291 6.30608 12.0057L27.1416 25.5487C28.2544 26.2721 27.7421 28.0001 26.4149 28.0001H5.57943C4.84304 28.0001 4.24609 27.4031 4.24609 26.6667Z"
+      fill="#064F30"
+    />
+    <path
+      d="M26.2461 13.9997L26.9128 17.9997L22.9128 18.6663M26.9128 17.9997L20.2461 13.333"
+      stroke="#064F30"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4.24609 26.6667V13.1236C4.24609 12.0657 5.41908 11.4291 6.30608 12.0057L27.1416 25.5488C28.2544 26.2722 27.7423 28 26.4149 28H5.57943C4.84305 28 4.24609 27.4031 4.24609 26.6667Z"
+      stroke="#064F30"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M12.2474 14.6667C15.1929 14.6667 17.5808 12.2789 17.5808 9.33333C17.5808 6.38781 15.1929 4 12.2474 4C9.30187 4 6.91406 6.38781 6.91406 9.33333C6.91406 12.2789 9.30187 14.6667 12.2474 14.6667Z"
+      stroke="#064F30"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
